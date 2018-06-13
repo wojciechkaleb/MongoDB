@@ -61,7 +61,7 @@ const findAllUsers = () =>
         .then(records => {
             console.log('\n Actual database recrods are \n' + records);
         })
-        .catch(error => {
+        .catch(error => {      
             console.log('Something went wrong ' + error);
         });
 const findSpecificUser = (username) =>
@@ -100,8 +100,8 @@ const deleteUser = (username) => {
 }
 Promise.all([kenny.save(),mark.save(),benny.save()])
     .then(findAllUsers)
-    .then(findSpecificUser('Kenny_the_boy'))
-    .then(updateUserPasword('Kenny_the_boy', 'kennyPassword'))
-    .then(updateUsername('Kenny_the_boy','Kenny_cute_boy'))
-    .then(deleteUser('Benny_the_boy'))
+    .then(() => findSpecificUser('Kenny_the_boy'))
+    .then(() => updateUserPasword('Kenny_the_boy', 'kennyPassword'))
+    .then(() => updateUsername('Kenny_the_boy','Kenny_cute_boy'))
+    .then(() => deleteUser('Benny_the_boy'))
     .then(findAllUsers)
